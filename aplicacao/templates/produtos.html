@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>PRODUTOS</h1>
+    <h1>Lista de Produtos</h1>
+    {% for p in produtos %}
+        <p>{{ p.nome }}</p>
+    {% endfor%}
 </body>
 </html>
