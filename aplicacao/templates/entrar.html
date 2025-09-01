@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form action="{% url 'url_entrar' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome" placeholder="Digite o usuário" required><br>
+        <input type="password" name="senha" placeholder="Digite a senha" required><br>
+        <input type="submit" name="btnEntrar" value="Entar">
+    </form>
+</body>
+</html>

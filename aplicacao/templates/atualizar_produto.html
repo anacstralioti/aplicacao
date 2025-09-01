@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Atualização de Produtos</h1>
+
+    <form action="{% url 'url_atualizar_produto' prod.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome" value="{{ prod.nome }}" class="form-control" required><br>
+        <input type="text" name="preco" value="{{ prod.preco }}" class="form-control" required><br>
+        <input type="text" name="qtd" value="{{ prod.qtd }}" class="form-control" required><br>
+        <input type="submit" name="btnSalvar" value="Salvar" class="btn btn-success">
+    </form>
+</body>
+</html>

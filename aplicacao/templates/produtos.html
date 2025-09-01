@@ -11,25 +11,39 @@
     <h1>Lista de Produtos</h1>
 
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Quantidade</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for p in produtos %}
-          <tr>
-            <th scope="row">{{ p.id }}</th>
-            <td>{{ p.nome }}</td>
-            <td>{{ p.preco }}</td>
-            <td>{{ p.qtde }}</td>
-          </tr>
-          {% endfor%}
-        </tbody>
-      </table>
-
+      <thead>Mercadinho da Aniqua
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Atualizar</th>
+          <th scope="col">Apagar</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for p in produtos %}
+        <tr>
+          <th scope="row">{{ p.id }}</th>
+          <td>{{p.nome}}</td>
+          <td>{{p.preco}}</td>
+          <td>{{p.qtde}}</td>
+          <td>
+            <form action="{% url 'url_atualizar_produto' p.id %}">
+              <input type="submit" name="btnAtualizar" value="Atualizar" class="btn btn-info">
+            </form>
+          </td>
+          <td>
+            <form action="{% url 'url_apagar_produto' p.id %}">
+              <input type="submit" name="btnApagar" value="Apagar" class="btn btn-danger">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <form action="{% url 'url_cad_produto' %}" method="GET">
+      <input type="submit" name="Novo Produto" class="btn btn-success">
+    </form>
 </body>
 </html>
