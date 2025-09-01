@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .models import Produto
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Produto
 
@@ -75,3 +76,24 @@ def entrar(request):
             return redirect('url_produtos')
         else:
             return HttpResponse("PANE NO SISTEMA ALGUÉM ME DESCONFIGUROU")
+
+def cad_user(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        senha = request.POST.get('senha')
+        email = request.POST.get('email')
+
+        user = User.objects.filter(username=nome).first()
+
+        if user:
+            return HttpResponse("Usuário já existe")
+
+        user = User.objects.create_user(username=nome,email=email,password=senha)
+        user.save()
+        messages.successs(request, "Usuário cadastrado")
+    else: 
+        return render(request, "cad_user.html")
+
+def sair(request):
+    logout(request)
+    return redirect('url_entrar')

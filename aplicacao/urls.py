@@ -8,4 +8,6 @@ urlpatterns = [
     path('atualizar_produto/<int:id>', views.atualizar_produto, name="url_atualizar_produto"),
     path('apagar_produto/<int:id>', views.apagar_produto, name="url_apagar_produto"),
     path('entrar', views.entrar, name="url_entrar"),
+    path('cad_user', views.cad_user, name="url_cad_user"),
+    path('sair', views.sair, name="url_sair"),
 ]
