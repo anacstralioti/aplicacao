@@ -17,10 +17,15 @@ class Cliente(models.Model):
 
 class Perfil(models.Model):        
     cliente = models.OneToOneField("Cliente", on_delete=models.CASCADE, related_name="perfil")
-    endereco = models.CharField("Endereço", max_length=200)
+    rua = models.CharField("Rua", max_length=200, blank=True)
+    numero = models.PositiveIntegerField("Quantidade", default=0, null= True)
+    cep = models.CharField("CEP", max_length=10, blank=True)
+    bairro = models.CharField("Bairro", max_length=50, blank=True)
+    cidade = models.CharField("Cidade", max_length=50, blank=True)
+    complemento = models.CharField("Complemento", max_length=50, blank=True)
     telefone = PhoneField("Telefone", blank=True)
     def __str__(self):
-        return self.endereco, self.telefone
+        return self.rua, self.numero, self.cep, self.bairro, self.cidade, self.complemento, self.telefone
 
 class Venda(models.Model):
     cliente = models.ForeignKey("Cliente", on_delete=models.CASCADE)
