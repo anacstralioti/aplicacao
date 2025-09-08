@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda</title>
+</head>
+<body>
+    <h1>Cadastro de Venda</h1>
+
+    <form action="{% url 'url_cad_venda' %}" method="POST">
+        {% csrf_token %}
+        <label for="cliente_id">Selecione o Cliente:</label>
+            <select name="cliente_id" id="cliente_id" required>
+                <option value="">---</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                {% endfor %}
+            </select>
+        <input type="date" name="data" class="form-control" required><br>
+        <input type="submit" name="btnSalvar" value="Salvar" class="btn btn-success">
+    </form>
+</body>
+</html>

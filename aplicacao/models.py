@@ -1,7 +1,6 @@
 from django.db import models
 from phone_field import PhoneField
 
-
 class Produto(models.Model):
     nome = models.CharField("Nome", max_length=200, null= True)
     preco = models.DecimalField("Preço", decimal_places=2, max_digits=8, null= True)

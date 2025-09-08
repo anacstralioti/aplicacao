@@ -1,0 +1,35 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de perfil de cliente</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    {% bootstrap_messages %}
+    <div class="container">
+        <form action="{% url 'url_cad_perfil' %}" method="POST">
+            {% csrf_token %}
+            <label for="cliente_id">Selecione o Cliente:</label>
+            <select name="cliente_id" id="cliente_id" class="form-control" required>
+                <option value="">---</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                {% endfor %}
+            </select><br>
+        <br><br>
+            <input type="text" name="rua" placeholder="Digite a rua..." class="form-control" required>
+            <input type="number" name="numero" placeholder="Digite o número..." class="form-control" required>
+            <input type="text" name="cep" placeholder="Digite o CEP..." class="form-control" required>
+            <input type="text" name="bairro" placeholder="Digite o bairro..." class="form-control" required>
+            <input type="text" name="cidade" placeholder="Digite a cidade..." class="form-control" required>
+            <input type="text" name="complemento" placeholder="Digite o complemento..." class="form-control" required>
+            <input type="text" name="telefone" placeholder="Digite o telefone..." class="form-control" required>
+
+            <input type="submit" value="Salvar" name="btnSalvar" class="btn btn-success">
+        </form>
+    </div>
+</body>
+</html>

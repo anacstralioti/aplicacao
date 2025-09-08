@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item de Venda</title>
+</head>
+<body>
+    <h1>Cadastro de Item de Venda</h1>
+
+    <form action="{% url 'url_cad_itemvenda' %}" method="POST">
+    {% csrf_token %}
+        <label for="venda_id">Venda:</label>
+        <select name="venda_id" required>
+            {% for venda in vendas %}
+                <option value="{{ venda.id }}">Venda {{ venda.id }} - {{ venda.cliente.nome }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="produto_id">Produto:</label>
+        <select name="produto_id" required>
+            {% for produto in produtos %}
+                <option value="{{ produto.id }}">{{ produto.nome }} ({{ produto.qtde }} em estoque)</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="qtde">Quantidade:</label>
+        <input type="number" name="qtde" min="1" required>
+        <br>
+
+        <button type="submit">Adicionar Item</button>
+    </form>
+      
+</body>
+</html>
