@@ -14,4 +14,5 @@ urlpatterns = [
     path('cad_perfil', views.cad_perfil, name="url_cad_perfil"),
     path('cad_venda', views.cad_venda, name="url_cad_venda"),
     path('cad_itemvenda', views.cad_itemvenda, name="url_cad_itemvenda"),
+    path('dashboard', views.dashboard, name='url_dashboard'),
 ]
